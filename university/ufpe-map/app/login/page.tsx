@@ -1,12 +1,7 @@
-import React from "react"
-
-
-const [name, setName] = React.useState('')
-
 export default function Login() {
   return (
-    <div>
-      Login
-    </div>
+    <main className="min-h-screen">
+      <h1>Login</h1>
+    </main>
   )
 }
