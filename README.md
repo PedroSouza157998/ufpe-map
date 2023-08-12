@@ -15,6 +15,9 @@ Este GitHub é destinado ao Front-End do nosso projeto, o Back-end pode ser enco
 ### Design e Arquitetura:
 Para a arquitetura de nosso projeto escolhemos utilizar a MVC que é um padrão de arquitetura de software que separa uma aplicação em três componentes principais: Model (Modelo), View (Visualização) e Controller (Controlador), para melhor organização e manutenção do código.
 
+### Ata's de reunião:
+[Ata 05/05/2023 »](https://github.com/PedroSouza157998/ufpe-map/blob/main/ATA_reuni%C3%A3o_05.08.md)
+
 ### Passo a passo para o funcionamento do projeto:
 - Usuário deve possuir o node.js v19 em sua máquina
 - Em seguida deve ser feito o download do repositório
