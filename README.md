@@ -18,4 +18,7 @@ Para a arquitetura de nosso projeto escolhemos utilizar a MVC que é um padrão 
 - Usuário deve possuir o node.js v19 em sua máquina
 - Em seguida deve ser feito o download do repositório
 - No terminal use o comando `npm install` ou `yarn`
-- Para abrir o projeto em sua máquina local utilize o comando `npm run dev` 
+- Para abrir o projeto em sua máquina local utilize o comando `npm run dev`
+
+##### Prototipagem:
+Para termos como base do desenvolvimento do front-end de nossa página estamos utilizando um mock-up no seguinte figma: https://www.figma.com/file/brXLAa8AOVKnMZWaHIXnqr/Prot%C3%B3tipo-UFPE-Map?type=design&node-id=0-1&mode=design&t=K2Ahk6KYM2ZxmDki-0
