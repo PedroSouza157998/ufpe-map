@@ -9,6 +9,10 @@ module.exports = {
     extend: {
       colors: {
         'green': '#17ADA8',
+        'btn-login': '#0D615E',
+      },
+      fontFamily: {
+        custom: ['Open Sans Condensed', 'sans'],
       },
     },
   },
