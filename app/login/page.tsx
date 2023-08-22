@@ -1,15 +1,36 @@
 'use client'
+
 import { useState } from  'react';
+import { useRouter } from '@/node_modules/next/navigation';
+
 import './stylePage.css'
 
 export default function Login() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const router = useRouter();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Verificar se o email é válido
+    if (!validateEmail(email)) {
+      setError('Invalid email format');
+      return;
+    }
+
+    if (email === 'testecin@gmail.com' && password === 'testecin12345') {
+      // caso o email e senha estejam corretos ele redireciona para /map
+      router.push('/map');  
+    }
   }
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   return (
     <main className="flex flex-col items-center justify-center h-screen">
@@ -23,6 +44,7 @@ export default function Login() {
             <div className="flex flex-col justify-center">
               <div className='mb-4'>
                 <label className='block text-white font-semibold mb-2'>Digite seu e-mail</label>
+                {error && <p className="text-red-500">{error}</p>}
                 <input 
                   type="email"
                   className="w-80 border text-gray-600 rounded-lg p-2" 
@@ -34,7 +56,7 @@ export default function Login() {
               <div>
                 <label className='block text-white font-semibold mb-2'>Digite sua senha</label>
                 <input 
-                  type="text"
+                  type="password"
                   className='w-80 border text-gray-600 rounded-lg p-2'
                   placeholder="Senha"
                   value={password}
@@ -45,7 +67,10 @@ export default function Login() {
             <button
               type='submit'
               className='w-ful bg-btn-login text-white font-semibold p-1 px-6 mt-8 rounded-lg'
-            >Acessar</button>
+              onClick={handleLogin}
+            >
+              Acessar
+            </button>
           <form/>
           <button className='self-start mt-8'>Esqueci minha senha</button>
           <button className='self-start mt-4'>Criar novo usuário</button>
