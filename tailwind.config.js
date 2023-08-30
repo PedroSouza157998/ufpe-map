@@ -14,6 +14,9 @@ module.exports = {
       fontFamily: {
         custom: ['Open Sans Condensed', 'sans'],
       },
+      spacing: {
+        '128': '32rem',
+      },
     },
   },
   plugins: [],
