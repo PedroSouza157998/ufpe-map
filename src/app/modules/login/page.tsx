@@ -1,9 +1,7 @@
-'use client'
-
 import { useState } from  'react';
-import { useRouter } from '@/node_modules/next/navigation';
+import { useRouter } from 'next/router';
 
-import './stylePage.css'
+
 
 export default function Login() {
 
