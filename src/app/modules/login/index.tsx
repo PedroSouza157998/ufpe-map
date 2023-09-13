@@ -1,7 +1,7 @@
 import { useState } from  'react';
 import { useRouter } from 'next/router';
-
-
+import axios from '../../../global/services/api';
+import { toast } from 'react-toastify';
 
 export default function Login() {
 
@@ -10,14 +10,30 @@ export default function Login() {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    try {
+
+      const {data} = await axios.post('/login', {
+        email,
+        password
+      })
+
+      if(data.auth) toast.success('Login efetuado com sucesso!')
+      localStorage.setItem("token", data.token)
+
+    } catch (error: any) {
+      if(error.response.status === 401) toast.error("Usuário não encontrado!")
+    }
+
     // Verificar se o email é válido
     if (!validateEmail(email)) {
       setError('Invalid email format');
       return;
     }
+
+    
 
     if (email === 'testecin@gmail.com' && password === 'testecin12345') {
       // caso o email e senha estejam corretos ele redireciona para /map
