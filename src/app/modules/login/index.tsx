@@ -3,9 +3,6 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 
 import axios from '../../../global/services/api';
-import Link from 'next/link';
-
-import newUser from '../../../pages/new-user'
 
 export default function Login() {
 
@@ -56,6 +53,10 @@ export default function Login() {
     router.push('/new-user');
   }
 
+  const handleRecoverPassword = () => {
+    router.push('/recover-password');
+  }
+
   return (
     <main className="flex flex-col items-center justify-center h-screen bg-green">
         <div className="flex flex-col items-center justify-center">
@@ -96,7 +97,7 @@ export default function Login() {
               Acessar
             </button>
           <form/>
-          <button className='self-start mt-8'>Esqueci minha senha</button>
+          <button onClick={handleRecoverPassword} className='self-start mt-8'>Esqueci minha senha</button>
           <button onClick={handleNewUser} className='self-start mt-4'>Criar novo usuário</button>
         </div>
     </main>
