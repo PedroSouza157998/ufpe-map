@@ -14,10 +14,10 @@ export default function NewUserPage() {
     // }
 
     return (
-        <main className="bg-gray-400">
-            <form >
-                <p>
-                    <h3>NOVO USUÁRIO</h3>
+        <main className="flex flex-col items-center justify-center h-screen bg-green">
+            <form className='w-96 flex flex-col bg-white bg-opacity-30 items-center text-white rounded-3xl p-6'>
+                <p className='self-start'>
+                    <h3 className='text-white text-xl font-bold m-2'>NOVO USUÁRIO</h3>
                 </p>
                 <div>
                     <label className='block text-white font-semibold mb-2'>NOME COMPLETO:</label>
@@ -29,7 +29,7 @@ export default function NewUserPage() {
                     onChange={(e) => setFullName(e.target.value)} />
                 </div>
                 <div>
-                    <label className='block text-white font-semibold mb-2'>SEU E-MAIL:</label>
+                    <label className='block text-white font-semibold mb-2 mt-4'>SEU E-MAIL:</label>
                     <input 
                     className='w-80 border text-gray-600 rounded-lg p-2' 
                     type="text"
@@ -38,7 +38,7 @@ export default function NewUserPage() {
                     onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div>
-                    <label className='block text-white font-semibold mb-2'>INFORME SUA SENHA</label>
+                    <label className='block text-white font-semibold mb-2 mt-4'>INFORME SUA SENHA</label>
                     <input 
                     className='w-80 border text-gray-600 rounded-lg p-2' 
                     type="text"
@@ -47,7 +47,7 @@ export default function NewUserPage() {
                     onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div>
-                    <label className='block text-white font-semibold mb-2'>CONFIRME SUA SENHA</label>
+                    <label className='block text-white font-semibold mb-2 mt-4'>CONFIRME SUA SENHA</label>
                     <input 
                     className='w-80 border text-gray-600 rounded-lg p-2' 
                     type="text"
@@ -55,9 +55,9 @@ export default function NewUserPage() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)} />
                 </div>
-                {/* <button type="submit" className="cadastro">
+                <button type="submit" className="w-23 bg-btn-login text-white font-semibold p-1 px-6 mt-8 rounded-lg">
                     CADASTRAR
-                </button> */}
+                </button>
             </form>
         </main>
     )

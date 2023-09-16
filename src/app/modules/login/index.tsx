@@ -1,7 +1,11 @@
 import { useState } from  'react';
 import { useRouter } from 'next/router';
-import axios from '../../../global/services/api';
 import { toast } from 'react-toastify';
+
+import axios from '../../../global/services/api';
+import Link from 'next/link';
+
+import newUser from '../../../pages/new-user'
 
 export default function Login() {
 
@@ -20,11 +24,13 @@ export default function Login() {
         password
       })
 
-      if(data.auth) toast.success('Login efetuado com sucesso!')
-      localStorage.setItem("token", data.token)
+      if(data.auth) {
+        toast.success('Login efetuado com sucesso!')
+        localStorage.setItem("token", data.token)
+      }
 
     } catch (error: any) {
-      if(error.response.status === 401) toast.error("Usuário não encontrado!")
+      if(error.response.status === 404) toast.error("Usuário não encontrado!")
     }
 
     // Verificar se o email é válido
@@ -46,13 +52,17 @@ export default function Login() {
     return emailRegex.test(email);
   };
 
+  const handleNewUser = () => {
+    router.push('/new-user');
+  }
+
   return (
-    <main className="flex flex-col items-center justify-center h-screen">
+    <main className="flex flex-col items-center justify-center h-screen bg-green">
         <div className="flex flex-col items-center justify-center">
             <img src="https://i.ibb.co/hxN3P63/Logo.png" alt="Logo UFPE" />
             <h2 className='text-white text-xl font-bold m-4'>UFPE Map</h2>
         </div>
-        <div className=" w-96 h- flex flex-col bg-white bg-opacity-30 items-center text-white rounded-3xl p-6">
+        <div className="w-96 h- flex flex-col bg-white bg-opacity-30 items-center text-white rounded-3xl p-6">
           <h1 className='text-xl font-semibold mb-8'>Bem vindo ao <strong className='text-[#0D615E] font-bold'>LOGIN</strong></h1>
           <form action="#" method="POST" onSubmit={handleLogin}></form>
             <div className="flex flex-col justify-center">
@@ -80,14 +90,14 @@ export default function Login() {
             </div>
             <button
               type='submit'
-              className='w-ful bg-btn-login text-white font-semibold p-1 px-6 mt-8 rounded-lg'
+              className='w-23 bg-btn-login text-white font-semibold p-1 px-6 mt-8 rounded-lg'
               onClick={handleLogin}
             >
               Acessar
             </button>
           <form/>
           <button className='self-start mt-8'>Esqueci minha senha</button>
-          <button className='self-start mt-4'>Criar novo usuário</button>
+          <button onClick={handleNewUser} className='self-start mt-4'>Criar novo usuário</button>
         </div>
     </main>
   )
