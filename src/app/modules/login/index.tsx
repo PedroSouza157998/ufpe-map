@@ -3,9 +3,6 @@ import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 
 import axios from '../../../global/services/api';
-import Link from 'next/link';
-
-import newUser from '../../../pages/new-user'
 
 export default function Login() {
 
@@ -18,6 +15,11 @@ export default function Login() {
     e.preventDefault();
     
     try {
+      // Verificar se o email é válido
+      if (!validateEmail(email)) {
+        setError('Invalid email format');
+        return;
+      }
 
       const {data} = await axios.post('/login', {
         email,
@@ -31,15 +33,7 @@ export default function Login() {
 
     } catch (error: any) {
       if(error.response.status === 404) toast.error("Usuário não encontrado!")
-    }
-
-    // Verificar se o email é válido
-    if (!validateEmail(email)) {
-      setError('Invalid email format');
-      return;
-    }
-
-    
+    }    
 
     if (email === 'testecin@gmail.com' && password === 'testecin12345') {
       // caso o email e senha estejam corretos ele redireciona para /map
