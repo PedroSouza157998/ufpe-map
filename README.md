@@ -60,10 +60,14 @@ Aproveite a nossa aplicação e explore os recursos disponíveis!
 - a tela de troca de senha foi finalizada mas não conseguimos junta-la ao resto do projeto
 
 
-#### Aqui você tem acesso as wiki´s sobre nosso código
 [WikiBack-end](wikiBack.md)
 [WikiFront-end](WikiFront-end.md)
 
 #### modelo er do projeto
 ![image](https://github.com/PedroSouza157998/ufpe-map-node/assets/78317354/a6fad4b3-364a-4efb-adb3-9fc767d742b8)
 
+
+#### Deploy
+nosso deploy foi feito utilizando a ferramenta Render, através dele conectamos o front com o back
+[Deploy front-end](https://ufpe-map-next.onrender.com/)
+[Deploy Back-end](https://ufpe-map-node.onrender.com/)
