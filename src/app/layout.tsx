@@ -1,11 +1,11 @@
 import './globals.css'
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+//@ts-igore
+// import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
-{inter.className}
+// const inter = Inter({ subsets: ['latin'] })
+// {inter.className}
 
-export const metadata: Metadata = {
+export const metadata: any = {
   title: 'UFPE Map',
   description: 'App to find events at UFPE',
 }
