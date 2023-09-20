@@ -1,4 +1,5 @@
-import LoginPage from '../../src/app/login'
+// import LoginPage from '../../src/app/login'
+import LoginPage from '../../src/app/modules/login'
 
 describe('test login', () => {
   it('Visits the website url and get form', () => {
