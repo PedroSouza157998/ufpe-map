@@ -32,3 +32,7 @@ Para termos como base do desenvolvimento do front-end de nossa página estamos u
 
 ### Modelo ER do banco:
 ![image](https://github.com/PedroSouza157998/ufpe-map-node/assets/78317354/a6fad4b3-364a-4efb-adb3-9fc767d742b8)
+
+## Wiki:
+Arquivo de wiki para obter informações detalhadas da parte de front-end do projeto: 
+[WikiFront-end](WikiFront-end.md)
