@@ -22,7 +22,7 @@ export default function MapPage() {
             <div className='flex flex-col h-[95vh] w-24 mt-[5vh] gap-3 items-center text-white'>
                 <i className='pi pi-user' />
                 <i className='pi pi-filter' />
-                <i className='pi pi-plus' onClick={() => setShowAddEvent(true)}/>
+                {/* <i className='pi pi-plus' onClick={() => setShowAddEvent(true)}/> */}
             </div>
             <Map />
             <Dialog header="Criar Novo Evento" visible={showAddEvent} style={{ width: '50vw', minWidth: '25rem' }} onHide={() => setShowAddEvent(false)}>

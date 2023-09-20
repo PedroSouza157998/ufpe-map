@@ -14,31 +14,28 @@ export default function Login() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    try {
       // Verificar se o email é válido
       if (!validateEmail(email)) {
         setError('Invalid email format');
         return;
       }
 
+      // const {data} = 
       const {data} = await axios.post('/login', {
         email,
         password
       })
 
+
       if(data.auth) {
         toast.success('Login efetuado com sucesso!')
         localStorage.setItem("token", data.token)
+        router.push('/map');  
+        
+      } else {
+        toast.error(data.message)
       }
 
-    } catch (error: any) {
-      if(error.response.status === 404) toast.error("Usuário não encontrado!")
-    }    
-
-    if (email === 'testecin@gmail.com' && password === 'testecin12345') {
-      // caso o email e senha estejam corretos ele redireciona para /map
-      router.push('/map');  
-    }
   }
 
   const validateEmail = (email: string): boolean => {

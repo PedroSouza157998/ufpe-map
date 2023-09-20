@@ -6,14 +6,17 @@ import axios from '../../../../global/services/api';
 import { useState } from 'react';
 
 export default function ShowAddEvent({
-    // latlng
+    latlng,
+    onClose
 }
-// : {latlng: LatLng}
+: {latlng?: LatLng | null, onClose?: any}
 ) {
     const [titulo, setTitulo ] = useState('')
     const [descricao, setDescricao ] = useState('')
     const [data, setData ] = useState<string | Date | Date[] | null>(null)
     const [referencia, setReferencia ] = useState('')
+
+    console.log(latlng)
 
     return (
         <div>
@@ -42,7 +45,14 @@ export default function ShowAddEvent({
             </div>
             <div className='flex justify-end mt-3'>
                 <Button label='Salvar' onClick={async () => {
-                    await axios.post('/evento', {})
+                    await axios.post('/evento', {
+                        titulo,
+                        descricao,
+                        data,
+                        referencia,
+                        coordenada: latlng
+                    })
+                    onClose()
                 }}/>
             </div>
         </div>

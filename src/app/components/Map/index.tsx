@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import axios from '../../../global/services/api';
 import { Dialog } from 'primereact/dialog';
 import ShowAddEvent from '../../modules/map/components/show-addd-event';
+import { format } from 'date-fns';
 
 export default function Map() {
     function MapUtils() {
@@ -31,15 +32,14 @@ export default function Map() {
         setEvento(e)
         // e.target.openPopup();
     };
+    const getEventos = async () => {
+        const {data} = await axios.get('/evento')
+        setAllevents(data)
+    } 
     
     useEffect(() => {
-        const getEventos = async () => {
-            const {data} = await axios.get('/evento')
-            console.log(data)
-            setAllevents(data)
-        } 
         getEventos()
-    })
+    }, [])
     
     return (
         <>
@@ -49,23 +49,27 @@ export default function Map() {
                     attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                 />
                 <MapUtils />
-                {/* {allevents.map((event, index) => {
+                {allevents.filter(event => new Date(event.data) > new Date()).map((event) => {
                     return (
                         <Marker 
-                            position={[(index -8.0509175),-34.952686]} 
+                            position={{lat: event.lat, lng: event.lng}} 
                             draggable={false} 
                             eventHandlers={{ click: (e) => handleClick(event) }}
                         ></Marker>   
                     )
-                }
-                )} */}
-                    {/* <h1>!!!!!!!!!!!!!!!!!!!!!!!</h1> */}
+                })}
+                
             </MapContainer>
             <Dialog header={evento?.titulo || ''} visible={!!evento} style={{ width: '50vw', minWidth: '25rem' }} onHide={() => setEvento(null)}>
-                <h1>{evento?.descricao || ''}</h1>
+            <h1>{evento?.descricao || ''}</h1>
+            <h1>{evento?.referencia || ''}</h1>
+            <h1>{evento?.data ? format(new Date(evento?.data), "dd/MM/yyyy") : ''}</h1>
             </Dialog>
             <Dialog header="Criar Novo Evento" visible={showAddEvent} style={{ width: '50vw', minWidth: '25rem' }} onHide={() => setShowAddEvent(false)}>
-                <ShowAddEvent />
+                <ShowAddEvent latlng={coordenadas} onClose={() => {
+                    getEventos()
+                    setShowAddEvent(false)
+                    }}/>
             </Dialog>
         </>
     )
