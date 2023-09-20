@@ -49,7 +49,7 @@ export default function Map() {
                     attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                 />
                 <MapUtils />
-                {allevents.filter(event => new Date(event.data) > new Date()).map((event) => {
+                {allevents.filter((event: any) => new Date(event.data) > new Date()).map((event: any) => {
                     return (
                         <Marker 
                             position={{lat: event.lat, lng: event.lng}} 
