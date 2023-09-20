@@ -65,7 +65,7 @@ export default function Map() {
                 <h1>{evento?.descricao || ''}</h1>
             </Dialog>
             <Dialog header="Criar Novo Evento" visible={showAddEvent} style={{ width: '50vw', minWidth: '25rem' }} onHide={() => setShowAddEvent(false)}>
-                <ShowAddEvent latlng={coordenadas} />
+                <ShowAddEvent />
             </Dialog>
         </>
     )
