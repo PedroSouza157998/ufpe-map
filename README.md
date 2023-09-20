@@ -1,4 +1,4 @@
-# ufpe-map-node
+# ufpe-map
 ## Membros
 Nossa equipe é composta pelos seguintes desenvolvedores
 
